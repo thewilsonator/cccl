@@ -1,0 +1,47 @@
+[
+  {
+    "line": "10",
+    "msg": "error: first",
+    "pattern_type": "test",
+    "pattern_name": "ctest failure",
+    "full": "fail1.cpp:10: error: first",
+    "context": "\u26a0\ufe0f\n1/3 Test #1: fail1 ............................***Failed    0.01 sec\nfail1.cpp:10: error: first\n",
+    "target_name": "fail1",
+    "file": "fail1.cpp",
+    "abs_filepath": "fail1.cpp",
+    "rel_filepath": "fail1.cpp",
+    "filename": "fail1.cpp",
+    "location": "fail1.cpp:10",
+    "summary": "`fail1.cpp:10`: `error: first`"
+  },
+  {
+    "line": "20",
+    "msg": "error: second",
+    "pattern_type": "test",
+    "pattern_name": "ctest failure",
+    "full": "fail2.cpp:20: error: second",
+    "context": "\u26a0\ufe0f\n2/3 Test #2: fail2 ............................***Failed    0.01 sec\nfail2.cpp:20: error: second\n",
+    "target_name": "fail2",
+    "file": "fail2.cpp",
+    "abs_filepath": "fail2.cpp",
+    "rel_filepath": "fail2.cpp",
+    "filename": "fail2.cpp",
+    "location": "fail2.cpp:20",
+    "summary": "`fail2.cpp:20`: `error: second`"
+  },
+  {
+    "line": "10",
+    "msg": "error: first",
+    "pattern_type": "test",
+    "pattern_name": "ctest failure",
+    "full": "fail1.cpp:10: error: first",
+    "context": "\u26a0\ufe0f\n3/3 Test #3: fail1_dup ........................***Failed    0.01 sec\nfail1.cpp:10: error: first\n\n",
+    "target_name": "fail1_dup",
+    "file": "fail1.cpp",
+    "abs_filepath": "fail1.cpp",
+    "rel_filepath": "fail1.cpp",
+    "filename": "fail1.cpp",
+    "location": "fail1.cpp:10",
+    "summary": "`fail1.cpp:10`: `error: first`"
+  }
+]
