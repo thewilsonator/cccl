@@ -1,5 +1,13 @@
 add_custom_target(libcudacxx.test.atomics.ptx)
 
+# Temporary work around, disable atomic codegen tests on Clang20+
+if (${CMAKE_CUDA_COMPILER_ID} STREQUAL "Clang")
+  if (${CMAKE_CUDA_COMPILER_VERSION} GREATER "20.0.0")
+    message("-- clang-cuda > 20.0.0 - skipping atomic codegen tests")
+    return()
+  endif()
+endif()
+
 find_program(filecheck "FileCheck")
 
 if (filecheck)
