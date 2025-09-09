@@ -48,12 +48,14 @@
 #include <cub/util_ptx.cuh>
 #include <cub/util_type.cuh>
 
-#include <cuda/ptx>
-#include <cuda/std/__algorithm_>
+#include <cuda/__ptx/instructions/get_sreg.h>
+#include <cuda/std/__algorithm/max.h>
+#include <cuda/std/__functional/operations.h>
+#include <cuda/std/__type_traits/conditional.h>
+#include <cuda/std/__type_traits/is_same.h>
 #include <cuda/std/cstdint>
 #include <cuda/std/limits>
 #include <cuda/std/span>
-#include <cuda/std/type_traits>
 
 CUB_NAMESPACE_BEGIN
 
@@ -953,7 +955,7 @@ struct BlockRadixRankMatchEarlyCounts
     _CCCL_DEVICE _CCCL_FORCEINLINE void ComputeHistogramsWarp(UnsignedBits (&keys)[KEYS_PER_THREAD])
     {
       // int* warp_offsets = &s.warp_offsets[warp][0];
-      int (&warp_histograms)[RADIX_DIGITS][NUM_PARTS] = s.warp_histograms[warp];
+      int(&warp_histograms)[RADIX_DIGITS][NUM_PARTS] = s.warp_histograms[warp];
 
       // compute warp-private histograms
       _CCCL_PRAGMA_UNROLL_FULL()

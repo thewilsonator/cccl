@@ -47,9 +47,10 @@
 
 #include <thrust/detail/integer_math.h>
 
+#include <cuda/__cmath/ceil_div.h>
 #include <cuda/std/__algorithm/max.h>
-#include <cuda/std/__algorithm/min.h>
-#include <cuda/std/type_traits>
+#include <cuda/std/__type_traits/is_same.h>
+#include <cuda/std/cstdint>
 
 CUB_NAMESPACE_BEGIN
 
@@ -263,7 +264,7 @@ struct DispatchMergeSort
           CompareOpT,
           KeyT,
           ValueT>(wrapped_policy.MergeSort());
-      const ::cuda::std::size_t virtual_shared_memory_size = (::cuda::std::max) (block_sort_smem_size, merge_smem_size);
+      const ::cuda::std::size_t virtual_shared_memory_size = (::cuda::std::max)(block_sort_smem_size, merge_smem_size);
 
       void* allocations[4]       = {nullptr, nullptr, nullptr, nullptr};
       size_t allocation_sizes[4] = {

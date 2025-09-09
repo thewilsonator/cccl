@@ -50,11 +50,12 @@
 #include <thrust/iterator/counting_iterator.h>
 #include <thrust/system/cuda/detail/core/triple_chevron_launch.h>
 
-#include <cuda/cmath>
-#include <cuda/std/__algorithm/max.h>
+#include <cuda/__cmath/ceil_div.h>
 #include <cuda/std/__algorithm/min.h>
-#include <cuda/std/iterator>
-#include <cuda/std/type_traits>
+#include <cuda/std/__iterator/reverse_iterator.h>
+#include <cuda/std/__type_traits/is_same.h>
+#include <cuda/std/cstdint>
+#include <cuda/std/limits>
 
 #include <nv/target>
 
@@ -463,7 +464,7 @@ struct DispatchSegmentedSort
         constexpr auto num_segments_per_invocation_limit =
           static_cast<global_segment_offset_t>(::cuda::std::numeric_limits<int>::max());
         auto const max_num_segments_per_invocation = static_cast<global_segment_offset_t>(
-          (::cuda::std::min) (static_cast<global_segment_offset_t>(num_segments), num_segments_per_invocation_limit));
+          (::cuda::std::min)(static_cast<global_segment_offset_t>(num_segments), num_segments_per_invocation_limit));
 
         large_and_medium_segments_indices.grow(max_num_segments_per_invocation);
         small_segments_indices.grow(max_num_segments_per_invocation);

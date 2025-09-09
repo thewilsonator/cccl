@@ -49,14 +49,18 @@
 
 #include <thrust/type_traits/integer_sequence.h>
 
-#include <cuda/bit>
-#include <cuda/functional>
-#include <cuda/std/__algorithm/max.h>
+#include <cuda/__bit/bitfield.h>
+#include <cuda/__type_traits/is_floating_point.h>
+#include <cuda/__utility/static_for.h>
 #include <cuda/std/__algorithm/min.h>
+#include <cuda/std/__functional/invoke.h>
+#include <cuda/std/__type_traits/enable_if.h>
+#include <cuda/std/__type_traits/integral_constant.h>
+#include <cuda/std/__type_traits/is_same.h>
+#include <cuda/std/__type_traits/remove_cv.h>
+#include <cuda/std/__type_traits/void_t.h>
 #include <cuda/std/cstdint>
 #include <cuda/std/tuple>
-#include <cuda/std/type_traits>
-#include <cuda/type_traits>
 
 CUB_NAMESPACE_BEGIN
 
@@ -442,7 +446,7 @@ struct digit_f
       using traits           = traits_t<::cuda::std::remove_cv_t<T>>;
       using bit_ordered_type = typename traits::bit_ordered_type;
 
-      const ::cuda::std::uint32_t bits_to_copy = (::cuda::std::min) (src_size - src_bit_start, num_bits);
+      const ::cuda::std::uint32_t bits_to_copy = (::cuda::std::min)(src_size - src_bit_start, num_bits);
 
       if (bits_to_copy)
       {
